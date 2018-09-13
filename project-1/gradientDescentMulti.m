@@ -18,7 +18,7 @@ for iter = 1:num_iters
     %
 
     % TODO: Check this.
-    theta = theta - (alpha / m) * sum(X' * (X * theta - y), 2);
+    theta = theta - (alpha / m) * X' * (X * theta - y);
     % ============================================================
 
     % Save the cost J in every iteration    
