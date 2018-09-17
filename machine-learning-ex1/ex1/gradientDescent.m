@@ -17,18 +17,8 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     % 
     
-    sumTheta = zeros(length(theta), 1);
+    theta = theta - alpha / m * transpose(X) * (X * theta - y);
     
-    for i = 1:length(y)
-        for j = 1:length(sumTheta)            
-            sumTheta(j) = ( X(i,:) * theta - y(i) ) * X(i, j) + sumTheta(j);
-        end
-    end
-    
-    for i = 1:length(theta)
-        theta(i) = theta(i) - (alpha / m) * sumTheta(i);
-    end
-
     % ============================================================
 
     % Save the cost J in every iteration    
