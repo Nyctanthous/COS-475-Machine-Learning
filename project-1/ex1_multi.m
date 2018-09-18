@@ -82,7 +82,7 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.06;
+alpha = 0.1;
 num_iters = 50;
 
 % Init Theta and Run Gradient Descent 
