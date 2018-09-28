@@ -23,7 +23,7 @@ z = X * theta;
 hyp = sigmoid(z);
 
 J = 1/m * sum(-y' * log(hyp) - (1 - y') * log(1 - hyp)) ...
-    + ((lambda/(2 * m)) * sum(theta.^2));
+    + ((lambda/(2 * m)) * sum(theta(2:end).^2));
 
 grad = 1/m * X' * (hyp - y);
 
