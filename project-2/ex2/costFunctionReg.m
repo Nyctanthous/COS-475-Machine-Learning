@@ -27,11 +27,9 @@ J = 1/m * sum(-y' * log(hyp) - (1 - y') * log(1 - hyp)) ...
 
 grad = 1/m * X' * (hyp - y);
 
-for i = 2:length(grad)
-    l = lambda / m * theta(i);
-    grad(i) = grad(i) + l; 
-end
-
+temp = theta;
+temp(1) = 0;
+grad = grad + lambda / m * temp;
 
 
 % =============================================================
