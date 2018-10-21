@@ -62,26 +62,43 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+% Input layer 1
+a1 = [ones(m,1) X];
 
+% Hidden layer 2
+z2 = Theta1 * a1';
+a2 = sigmoid(z2)';
+a2 = [ones(m, 1) a2];
 
+% Output layer 3
+z3 = Theta2 * a2';
+a3 = sigmoid(z3)';
 
+yVector = 1:max(y) == y; 
 
+J = 1/m * sum(sum(-yVector .* log(a3) - (1 - yVector) .* log(1 - a3)));
 
+% ThetaN(:, 2:end) --> skip the first column because its for the bias term
+reg = (lambda / (2 * m)) * (sum(sum(Theta1(:, 2:end) .^ 2)) ...
+    + sum(sum(Theta2(:, 2:end) .^ 2)));
 
-
-
-
-
-
-
-
-
-
-
-
+J = J + reg;
 
 % -------------------------------------------------------------
 
+delta_3 = zeros(size(a3));
+
+for k = 1:max(y)
+    delta_3(:, k) = a3(:, k) - yVector(:, k);
+end
+
+delta_2 = delta_3 * Theta2(:, 2:end) .* sigmoidGradient(z2)';
+
+Theta1_grad = 1/m * delta_2' * a1;
+Theta2_grad = 1/m * delta_3' * a2;
+
+Theta1_grad(:, 2:end) = Theta1_grad(:, 2:end) + (lambda/m) * Theta1(:, 2:end); 
+Theta2_grad(:, 2:end) = Theta2_grad(:, 2:end) + (lambda/m) * Theta2(:, 2:end); 
 % =========================================================================
 
 % Unroll gradients
