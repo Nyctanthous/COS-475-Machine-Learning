@@ -1,6 +1,8 @@
 # COS 475 Labs/Coursera Machine Learning
 **Team Members: Ben Montgomery, Daniel Shepard II, Emily Wall**
 
+*Fall 2018*
+
 ## Introduction
 In addition to regular coursework, including project assignments, USM's 2018 course COS 475: Machine Learning used [Andrew Ng's][0] Coursera projects as biweekly labs. As such, the projects rely on pre-built MATLAB frameworks, and focus on implementing the actual machine learning algorithms.
 
